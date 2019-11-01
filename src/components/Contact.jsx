@@ -10,37 +10,44 @@ class Contact extends React.Component {
     };
   }
   render() {
+    const statusAlternation = e => {
+      const status = !this.state.online;
+       this.setState({ online: status });
+    };
     return (
-    <div class="Contact">
+     
+    <div className="Contact">
       <img
         class="avatar"
         src={this.props.avatar}
         alt={this.props.name}
-      />
-      <div style={{
+     />
+     
+      { <div style={{
         display: "flex",
         flexDirection: "column"
-      }}>
-        <h4 class="name">{this.props.name}</h4>
-        <div class="status" style={{
+      }}></div> }
+        <h4 className="name">{this.props.name}</h4>
+        <div className="status" onClick={statusAlternation}>
+        <div className="status" style={{
           display: "flex",
           flexDirection: "row"
         }}>
-          { <p class={this.props.online ? "status-online" : "status-offline"}></p> }
-          {  <p class="status-text">{this.props.online ? "online" : "offline"}</p> }  
+          
+          { <p class={this.state.online ? "status-online" : "status-offline"}></p> }
+          { <p class="status-text">{this.state.online ? "online" : "offline"}</p> }  
           
          </div>
       </div>
     </div>
     );
       }
-    }
+}
 
 
 
 
 export default Contact;
-
 
 
 
